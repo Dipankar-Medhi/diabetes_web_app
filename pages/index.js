@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useState } from "react"
 import Hero from '../components/hero'
-import Navbar from '../components/navbar'
-import Link from "react"
+import Image from 'next/image'
+import Link from "next/link"
 
 
 export default function Home() {
@@ -110,7 +110,7 @@ export default function Home() {
           </form>
         </div>
         <div className="w-1/2 grid place-content-center m-2 flex-wrap justify-center">
-          <div className="">
+          <div >
 
             <h1 className="text-gray-300 text-lg sm:text-4xl font-sans mx-6">
               {pred_result}
@@ -123,9 +123,9 @@ export default function Home() {
 
         <div className="flex space-x-2 items-center">
           <p className="text-lg md:text-2xl text-gray-100">Hope you liked ❤</p>
-          <a href="https://github.com/Dipankar-Medhi" className="">
-            <img src="/images/github.svg" width="50" alt="logo" />
-          </a>
+          <Link href="https://github.com/Dipankar-Medhi">
+            <Image src="/images/github.svg" alt="logo" width="50" height="50" />
+          </Link>
         </div>
       </footer>
     </div>

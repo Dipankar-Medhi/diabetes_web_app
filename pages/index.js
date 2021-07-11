@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import Navbar from '../components/navbar'
 import { useState } from "react"
 import Hero from '../components/hero'
+import Navbar from '../components/navbar'
+import Link from "react"
 
 
 export default function Home() {
 
-  const [pred_result, setPred_result] = useState("Please enter the details")
+  const [pred_result, setPred_result] = useState("Please enter the details on the form")
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -46,65 +47,87 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <div>
-        <form className="w-full max-w-lg" method="POST" onSubmit={handleSubmit}>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Pregnancies">
-            </label>
-            Pregnancies
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Pregnancies" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Glucose">
-              Glucose
-            </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Glucose" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="BloodPressure">
-            </label>
-            Blood Pressure
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="BloodPressure" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="">
-            </label>
-            Skin Thickness
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="SkinThickness" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Insulin">
-            </label>
-            Insulin
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Insulin" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="BMI">
-            </label>
-            BMI
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="BMI" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="DiabetesPedigreeFunction">
-            </label>
-            Diabetes Pedigree Function
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="DiabetesPedigreeFunction" type="text" placeholder=""></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Age">
-            </label>
-            Age
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Age" type="text" placeholder=""></input>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+      <div className=" pt-40 flex flex-col md:flex-row justify-evenly bg-gradient-to-r from-gray-700 via-gray-800 to-black">
         <div>
-          {pred_result}
+
+        </div>
+        <div className="w-full md:w-1/2 sm:mx-auto md:m-2 md:p-5 rounded-md shadow-sm border-2 border-gray-700">
+
+          <form className="w-full" method="POST" onSubmit={handleSubmit}>
+            <h1 className="text-xl md:text-3xl font-sans text-gray-200 font-bold flex justify-center">Fill the Independent Variables</h1>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Pregnancies">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Pregnancies</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Pregnancies" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Glucose">
+                <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Glucose</p>
+              </label>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Glucose" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="BloodPressure">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Blood Pressure</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="BloodPressure" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="SkinThickness">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Skin Thickness</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="SkinThickness" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Insulin">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Insulin</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Insulin" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="BMI">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Body Mass Index (BMI)</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="BMI" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="DiabetesPedigreeFunction">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Diabetes Pedigree Function</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="DiabetesPedigreeFunction" type="text" placeholder=""></input>
+            </div>
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Age">
+              </label>
+              <p className="sm:text-2xl text-lg font-mono text-gray-200 font-bold">Age</p>
+              <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="Age" type="text" placeholder=""></input>
+            </div>
+            <div className="flex justify-center">
+
+              <button className="border-gray-500 px-6 py-4 m-2 bg-gray-400 rounded-md shadow-md hover:bg-gray-200 " type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div className="w-1/2 grid place-content-center m-2 flex-wrap justify-center">
+          <div className="">
+
+            <h1 className="text-gray-300 text-lg sm:text-4xl font-sans mx-6">
+              {pred_result}
+            </h1>
+          </div>
+
         </div>
       </div>
-      <div>
+      <footer className="py-14 flex justify-center bg-gradient-to-r from-gray-700 via-gray-800 to-black">
 
-      </div>
+        <div className="flex space-x-2 items-center">
+          <p className="text-lg md:text-2xl text-gray-100">Hope you liked ❤</p>
+          <a href="https://github.com/Dipankar-Medhi" className="">
+            <img src="/images/github.svg" width="50" alt="logo" />
+          </a>
+        </div>
+      </footer>
     </div>
   )
 }

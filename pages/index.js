@@ -3,14 +3,18 @@ import { useState } from "react"
 import Hero from '../components/hero'
 import Image from 'next/image'
 import Link from "next/link"
+import Spinner from 'react-spinner-material';
 
 
 export default function Home() {
+
+  const [loading, setloading] = useState(false)
 
   const [pred_result, setPred_result] = useState("Please enter the details on the form")
 
   async function handleSubmit(event) {
     event.preventDefault()
+    setloading(true)
 
     try {
       const res = await fetch("https://pima-diabetes.herokuapp.com/predict", {
@@ -31,6 +35,7 @@ export default function Home() {
       })
       const result = await res.json()
       setPred_result(result.Prediction)
+      setloading(false)
     } catch (error) {
       console.log(error)
     }
@@ -113,7 +118,11 @@ export default function Home() {
           <div >
 
             <h1 className="text-gray-300 text-lg sm:text-4xl font-sans mx-6">
-              {pred_result}
+              {/* {pred_result} */}
+              {loading ?
+                <Spinner size={120} spinnerColor={"#000"} spinnerWidth={2} visible={true} />
+                : pred_result
+              }
             </h1>
           </div>
 
